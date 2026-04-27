@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Closed Tester</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #007fff;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background: #fff;
+            max-width: 500px;
+            width: 100%;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-sizing: border-box;
+        }
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #007fff;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        .checkbox-group, .radio-group {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #007fff;
+        }
+        .checkbox-item, .radio-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+            font-weight: normal;
+        }
+        .checkbox-item:last-child, .radio-item:last-child {
+            margin-bottom: 0;
+        }
+        .checkbox-item input, .radio-item input {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .radio-group-inline {
+            display: flex;
+            flex-direction: column;
+            margin-top: 5px;
+        }
+        .divider {
+            height: 1px;
+            background: #ddd;
+            margin: 10px 0;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #001aac;
+        }
+
+        /* Penyesuaian Responsif untuk Layar Kecil */
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            button {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Form Closed Tester</h2>
+    <p style="text-align: center; font-size: 14px; color: #7f8c8d;">Bantu kami menguji aplikasi untuk menyelesaikan tugas mata kuliah Pemrograman Mobile (semester 4).</p>
+    <p style="text-align: left; font-size: 14px; color: #7f818d;">
+        <b>Kelompok 5</b>
+        <br>1. Azizah Nuramalia (1179) - e-GuestBook
+        <br>2. Desi Reza (1186) - 
+        <br>3. M. Habibi Rahman (1005) - Neon Arena
+        <br>4. Irfan Fathurrohman (1187) - EduKu: Edukasi Kuis Narkoba
+        <br>5. Rommy Aprian (1198) - 
+    </p>
+
+    <form id="testerForm" action="https://formspree.io/f/xaqazzkb" method="POST">
+        <div class="form-group">
+            <label for="email">Alamat Email Valid</label>
+            <input type="email" id="email" name="email" required placeholder="contoh@email.com">
+        </div>
+
+        <div class="form-group">
+            <label>Pilih Aplikasi untuk Diuji:</label>
+            <div class="checkbox-group">
+                <label class="checkbox-item">
+                    <input type="checkbox" id="app_all" value="Semua Aplikasi"> <b>Pilih Semua Aplikasi</b>
+                </label>
+                <div class="divider"></div>
+                <label class="checkbox-item">
+                    <input type="checkbox" class="app-option" name="aplikasi[]" value="e-GuestBook"> e-GuestBook
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" class="app-option" name="aplikasi[]" value="Aplikasi 5"> desi
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" class="app-option" name="aplikasi[]" value="Neon Arena"> Neon Arena
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" class="app-option" name="aplikasi[]" value="EduKu"> EduKu: Edukasi Kuis Narkoba
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" class="app-option" name="aplikasi[]" value="Sistem Informasi UKM Malaka"> Rommy
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Apakah kamu bersedia menjadi tester selama 14 hari secara aktif?</label>
+            <div class="radio-group-inline">
+                <label class="radio-item">
+                    <input type="radio" name="kesediaan_14_hari" value="Bersedia" required> Bersedia
+                </label>
+                <label class="radio-item">
+                    <input type="radio" name="kesediaan_14_hari" value="Tidak" required> Tidak
+                </label>
+            </div>
+        </div>
+
+        <button type="submit">Kirim</button>
+    </form>
+</div>
+
+<script>
+    // Hanya logika UI untuk sinkronisasi Checkbox
+    const checkAll = document.getElementById('app_all');
+    const appOptions = document.querySelectorAll('.app-option');
+
+    checkAll.addEventListener('change', function() {
+        appOptions.forEach(checkbox => {
+            checkbox.checked = this.checked;
+        });
+    });
+
+    appOptions.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            if (!this.checked) {
+                checkAll.checked = false;
+            } else {
+                const allChecked = Array.from(appOptions).every(c => c.checked);
+                if (allChecked) checkAll.checked = true;
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
