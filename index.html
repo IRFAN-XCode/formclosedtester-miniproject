@@ -25,7 +25,7 @@
         }
         h2 {
             text-align: center;
-            color: #2c3e50;
+            color: #007fff;
             margin-top: 0;
         }
         .form-group {
@@ -39,7 +39,7 @@
         input[type="email"] {
             width: 100%;
             padding: 10px;
-            border: 1px solid #007fff;
+            border: 1px solid #ccc;
             border-radius: 5px;
             box-sizing: border-box;
             font-family: inherit;
@@ -48,7 +48,7 @@
             background: #f9f9f9;
             padding: 15px;
             border-radius: 5px;
-            border: 1px solid #007fff;
+            border: 1px solid #eee;
         }
         .checkbox-item, .radio-item {
             display: flex;
@@ -77,7 +77,7 @@
         button {
             width: 100%;
             padding: 12px;
-            background: #3498db;
+            background: #007fff;
             color: white;
             border: none;
             border-radius: 5px;
@@ -87,10 +87,35 @@
             transition: background 0.3s;
         }
         button:hover {
-            background: #001aac;
+            background: #0e0596;
         }
 
-        /* Penyesuaian Responsif untuk Layar Kecil */
+        /* Styling Halaman Terima Kasih */
+        #thankYouScreen {
+            display: none; /* Disembunyikan secara default */
+            text-align: center;
+            padding: 20px 0;
+        }
+        .success-icon {
+            font-size: 50px;
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+        .btn-group {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px;
+            background: #25D366; 
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn-group:hover {
+            background: #128C7E;
+        }
+
         @media (max-width: 480px) {
             .container {
                 padding: 20px;
@@ -104,24 +129,25 @@
 <body>
 
 <div class="container">
-    <h2>Form Closed Tester</h2>
-    <p style="text-align: center; font-size: 14px; color: #7f8c8d;">Bantu kami menguji aplikasi untuk menyelesaikan tugas mata kuliah Pemrograman Mobile (semester 4).</p>
-    <p style="text-align: left; font-size: 14px; color: #7f818d;">
-        <b>Kelompok 5</b>
-        <br>1. Azizah Nuramalia (1179) - e-GuestBook (Buku Tamu Digital)
-        <br>2. Desi Reza (1186) - 
-        <br>3. M. Habibi Rahman (1005) - Neon Arena (Tic Tac Toe)
-        <br>4. Irfan Fathurrohman (1187) - EduKu: Edukasi Kuis Narkoba
-        <br>5. Rommy Aprian (1198) - 
-    </p>
+    
+    <div id="formArea">
+        <h2>Form Closed Tester</h2>
+        <p style="text-align: center; font-size: 14px; color: #7f8c8d;">Bantu kami menguji aplikasi untuk menyelesaikan tugas mata kuliah Pemrograman Mobile (semester 4).</p>
+        <p style="text-align: left; font-size: 14px; color: #7f818d;">
+            <b>Kelompok 5</b>
+            <br>1. Azizah Nuramalia (1179) - e-GuestBook (Buku Tamu Digital)
+            <br>2. Desi Reza (1186) - Daily Mood & Journal
+            <br>3. M. Habibi Rahman (1005) - Neon Arena (Tic Tac Toe)
+            <br>4. Irfan Fathurrohman (1187) - EduKu: Edukasi Kuis Narkoba
+            <br>5. Rommy Aprian (1198) - Arisan Digital
+    </p>        
+        <form id="testerForm" action="https://formspree.io/f/xaqazzkb" method="POST">
+            <div class="form-group">
+                <label for="email">Alamat Email Valid</label>
+                <input type="email" id="email" name="email" required placeholder="contoh@email.com">
+            </div>
 
-    <form id="testerForm" action="https://formspree.io/f/xaqazzkb" method="POST">
-        <div class="form-group">
-            <label for="email">Alamat Email Valid</label>
-            <input type="email" id="email" name="email" required placeholder="contoh@email.com">
-        </div>
-
-        <div class="form-group">
+            <div class="form-group">
             <label>Pilih Aplikasi untuk Diuji:</label>
             <div class="checkbox-group">
                 <label class="checkbox-item">
@@ -132,7 +158,7 @@
                     <input type="checkbox" class="app-option" name="aplikasi[]" value="e-GuestBook"> e-GuestBook
                 </label>
                 <label class="checkbox-item">
-                    <input type="checkbox" class="app-option" name="aplikasi[]" value="Aplikasi 5"> Daily Mood & Journal
+                    <input type="checkbox" class="app-option" name="aplikasi[]" value="Daily Mood & Journal"> Daily Mood & Journal
                 </label>
                 <label class="checkbox-item">
                     <input type="checkbox" class="app-option" name="aplikasi[]" value="Neon Arena"> Neon Arena
@@ -141,29 +167,41 @@
                     <input type="checkbox" class="app-option" name="aplikasi[]" value="EduKu"> EduKu: Edukasi Kuis Narkoba
                 </label>
                 <label class="checkbox-item">
-                    <input type="checkbox" class="app-option" name="aplikasi[]" value="Sistem Informasi UKM Malaka"> Arisan Digital
+                    <input type="checkbox" class="app-option" name="aplikasi[]" value="Arisan Digital"> Arisan Digital
                 </label>
             </div>
         </div>
 
-        <div class="form-group">
-            <label>Apakah kamu bersedia menjadi tester selama 14 hari secara aktif?</label>
-            <div class="radio-group-inline">
-                <label class="radio-item">
-                    <input type="radio" name="kesediaan_14_hari" value="Bersedia" required> Bersedia
-                </label>
-                <label class="radio-item">
-                    <input type="radio" name="kesediaan_14_hari" value="Tidak" required> Tidak
-                </label>
+            <div class="form-group">
+                <label>Apakah kamu bersedia menjadi tester selama 14 hari secara aktif?</label>
+                <div class="radio-group-inline">
+                    <label class="radio-item">
+                        <input type="radio" name="kesediaan_14_hari" value="Bersedia" required> Bersedia
+                    </label>
+                    <label class="radio-item">
+                        <input type="radio" name="kesediaan_14_hari" value="Tidak" required> Tidak
+                    </label>
+                </div>
             </div>
-        </div>
 
-        <button type="submit">Kirim</button>
-    </form>
+            <button type="submit" id="submitBtn">Kirim Pendaftaran</button>
+        </form>
+    </div>
+
+    <div id="thankYouScreen">
+        <div class="success-icon">✔️</div>
+        <h2>Terima Kasih!</h2>
+        <p>Data pendaftaran Anda telah berhasil kami terima.</p>
+        <p style="font-size: 14px; color: #7f8c8d; margin-top: 15px;">
+            Langkah selanjutnya, silakan bergabung ke dalam grup koordinasi tester melalui tautan di bawah ini:
+        </p>
+        <a href="https://chat.whatsapp.com/CUopsdxKflw3NsYBxi6jaF" class="btn-group" target="_blank">Bergabung ke Grup Tester</a>
+    </div>
+
 </div>
 
 <script>
-    // Hanya logika UI untuk sinkronisasi Checkbox
+    // --- 1. Logika Sinkronisasi Checkbox ---
     const checkAll = document.getElementById('app_all');
     const appOptions = document.querySelectorAll('.app-option');
 
@@ -182,6 +220,45 @@
                 if (allChecked) checkAll.checked = true;
             }
         });
+    });
+
+    // --- 2. Logika Submit Form Tanpa Reload (AJAX) ---
+    const form = document.getElementById('testerForm');
+    const submitBtn = document.getElementById('submitBtn');
+    
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault(); // Mencegah pindah ke halaman default Formspree
+        
+        // Ubah teks tombol saat loading
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.innerHTML = 'Mengirim...';
+        submitBtn.disabled = true;
+
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                // Sembunyikan Form, Tampilkan Layar Terima Kasih
+                document.getElementById('formArea').style.display = 'none';
+                document.getElementById('thankYouScreen').style.display = 'block';
+            } else {
+                alert("Oops! Terjadi kesalahan saat mengirim data. Silakan coba lagi.");
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        } catch (error) {
+            alert("Oops! Ada masalah dengan koneksi internet Anda.");
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+        }
     });
 </script>
 
